@@ -1,3 +1,4 @@
+
 const hourHand = document.querySelector('[data-hour-hand]');
 const minuteHand = document.querySelector('[data-minute-hand]');
 const secondHand = document.querySelector('[data-second-hand]');
@@ -18,11 +19,13 @@ function setRotation(element, rotationRatio) {
 }
 
 function setDate() {
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
     const day = currentDate.getDate().toString().padStart(2, '0');
-    dateDisplay.textContent = `${year}/${month}/${day}`;
+    const dayOfWeek = dayNames[currentDate.getDay()];
+    dateDisplay.textContent = `${year}/${month}/${day} (${dayOfWeek})`;
 }
 
 setInterval(setClock, 1000);
